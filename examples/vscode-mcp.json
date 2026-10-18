@@ -1,0 +1,8 @@
+{
+  "servers": {
+    "headcountlabs": {
+      "type": "http",
+      "url": "https://api.headcountlabs.com/mcp"
+    }
+  }
+}

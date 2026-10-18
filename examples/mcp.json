@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "headcountlabs": {
+      "url": "https://api.headcountlabs.com/mcp"
+    }
+  }
+}
