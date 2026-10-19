@@ -14,7 +14,7 @@ official MCP Registry entry ([`server.json`](server.json), name `com.headcountla
 
 | Endpoint | Sign-in | Tools |
 | --- | --- | --- |
-| `https://api.headcountlabs.com/mcp/public` | None | 6 read-only tools; one search shows up to 100 matching jobs |
+| `https://api.headcountlabs.com/mcp/public` | None | 6 read-only tools; one search shows up to 250 matching jobs, 50 per page |
 | `https://api.headcountlabs.com/mcp` | OAuth 2.1 (PKCE, dynamic client registration) or an API key as a bearer token | 26 tools, including exports, the company registry, the job change feed and usage |
 
 Both use the Streamable HTTP transport.
@@ -106,6 +106,7 @@ apply to jobs or contact employers.
 - **Errors say how to fix the call.** A bad argument returns `invalid_arguments` with each problem's `field`, what is
   wrong, the accepted values or the nearest valid name (`did_you_mean`), and a working `example`. Rate-limit and
   overload errors give `retry_after_seconds`.
+- **Paging.** Signed in, `limit` is the page size (10 to 100, default 50) and `max_results` is the most results one search returns across all its pages (10 to 1,000, default 250). They apply to `search_jobs`, `search_jobs_json`, `search_jobs_dsl`, `list_company_jobs`, `list_companies`, `search_companies` and `list_job_changes`. Set both on the first call and keep them the same on every page, because the cursor carries them. A search that reaches the cap returns `next_cursor: null` and a note. The no-account endpoint pages 1 to 50 jobs (default 10, or 1 to 10 with full descriptions) and stops at 250.
 - **Job cards.** In clients that support MCP Apps, `search_jobs` also shows the jobs as cards with pay, remote and
   location filters and an Apply button that opens the original posting. Other clients get the normal result.
 
@@ -126,7 +127,7 @@ posting and apply links.
 - Coverage by platform, country and company: [headcountlabs.com/coverage](https://headcountlabs.com/coverage/)
 - Fields in a job record: [headcountlabs.com/docs/data-fields](https://headcountlabs.com/docs/data-fields/)
 - REST API with the same filters: [headcountlabs.com/docs](https://headcountlabs.com/docs/)
-- Open dataset on Hugging Face (CC BY 4.0): [HeadcountLabs/job-postings](https://huggingface.co/datasets/HeadcountLabs/job-postings), with example queries and the schema in the [job-postings repository](https://github.com/HeadcountLabs/job-postings)
+- Bulk download of the whole job dataset on Hugging Face (CC BY 4.0): [HeadcountLabs/job-postings](https://huggingface.co/datasets/HeadcountLabs/job-postings), with example queries and the schema in the [job-postings repository](https://github.com/HeadcountLabs/job-postings)
 
 ## Privacy and support
 
