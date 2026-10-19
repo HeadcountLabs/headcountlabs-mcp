@@ -94,6 +94,21 @@ reference, with scopes and limits, is at [headcountlabs.com/docs/mcp-tools](http
 Every tool carries a `title` and `readOnlyHint` or `destructiveHint` annotations. The tools read job data. They can't
 apply to jobs or contact employers.
 
+## What results look like
+
+- **Compact by default.** `search_jobs` returns a short summary of each job: rank, `job_id`, the employer-written title,
+  employer and a 200-character snippet (in `job_ad`), locations, work arrangement, pay with its period, dates and the
+  posting and apply links. Pass `view: "full"`, name the `fields` you need, or call `get_job` for every field. Ten
+  typical searches came to 62% fewer tokens than with every field.
+- **Job ad text is data.** Results that carry employer-written text start with an `untrusted_content` notice, and the
+  server tells the AI never to follow instructions inside a job ad. Hidden text (zero-width and text-direction
+  characters, HTML comments, hidden elements) is removed before it is sent.
+- **Errors say how to fix the call.** A bad argument returns `invalid_arguments` with each problem's `field`, what is
+  wrong, the accepted values or the nearest valid name (`did_you_mean`), and a working `example`. Rate-limit and
+  overload errors give `retry_after_seconds`.
+- **Job cards.** In clients that support MCP Apps, `search_jobs` also shows the jobs as cards with pay, remote and
+  location filters and an Apply button that opens the original posting. Other clients get the normal result.
+
 ## Example prompts
 
 - "How many data engineer jobs are open in Germany right now?"
