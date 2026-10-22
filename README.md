@@ -127,7 +127,7 @@ posting and apply links.
 - Coverage by platform, country and company: [headcountlabs.com/coverage](https://headcountlabs.com/coverage/)
 - Fields in a job record: [headcountlabs.com/docs/data-fields](https://headcountlabs.com/docs/data-fields/)
 - REST API with the same filters: [headcountlabs.com/docs](https://headcountlabs.com/docs/)
-- Bulk download of the whole job dataset on Hugging Face (CC BY 4.0): [HeadcountLabs/job-postings](https://huggingface.co/datasets/HeadcountLabs/job-postings), with example queries and the schema in the [job-postings repository](https://github.com/HeadcountLabs/job-postings)
+- Bulk download of the whole job dataset on Hugging Face (ODbL 1.0): [HeadcountLabs/job-postings](https://huggingface.co/datasets/HeadcountLabs/job-postings), with example queries and the schema in the [job-postings repository](https://github.com/HeadcountLabs/job-postings)
 
 ## Privacy and support
 
